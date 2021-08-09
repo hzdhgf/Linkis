@@ -114,13 +114,13 @@ object LineageResolveLogic extends Logging{
           inputTables.add(TableInfo(currentDB, plan.alias))
         }
 
-      case plan: UnresolvedRelation =>
-        val tableInfo = TableInfo(plan.tableIdentifier.database.getOrElse(currentDB), plan.tableIdentifier.table)
-        inputTables.add(tableInfo)
-
-      case plan: InsertIntoTable =>
-        resolveLogic(plan.table, currentDB, outputTables, inputTables)
-        resolveLogic(plan.query, currentDB, inputTables, outputTables)
+//      case plan: UnresolvedRelation =>
+//        val tableInfo = TableInfo(plan.tableIdentifier.database.getOrElse(currentDB), plan.tableIdentifier.table)
+//        inputTables.add(tableInfo)
+//
+//      case plan: InsertIntoTable =>
+//        resolveLogic(plan.table, currentDB, outputTables, inputTables)
+//        resolveLogic(plan.query, currentDB, inputTables, outputTables)
 
       case plan: CreateTable =>
         if(plan.query.isDefined){
